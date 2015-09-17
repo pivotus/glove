@@ -7,7 +7,7 @@ echo "Gerekli paketlerin yüklenmesi için parolanızı girin!"
 sudo apt-get update
 
 # install zsh, tmux
-sudo apt-get install zsh tmux vim vim-gtk build-essential cmake python-dev
+sudo apt-get install -y zsh tmux vim vim-gtk build-essential cmake python-dev
 
 if [ ! $SHELL="/bin/zsh" ]; then
 	echo "Kabuk değişimi için parolanızı girin!"
@@ -106,7 +106,7 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # guake
 if [ ! -z $DESKTOP_SESSION ]; then
-	sudo apt-get install guake
+	sudo apt-get install -y guake
 
 	# monaco font
 	cd $GLOVE/tools/monaco-font
@@ -131,12 +131,7 @@ if ! file_exist "$HOME/.dircolors/dircolors.256dark"; then
 	ln -s $GLOVE/tools/dircolors-solarized/dircolors.256dark $HOME/.dircolors
 fi
 
-say "
-vim eklentilerinin yüklenmesi için herhangi bir tuşa basın. Gelecek hata
-mesajlarını 'Enter' tuşu ile geçiniz. Eklenti kurulumu bittikten sonra,
-vim'den normal bir biçimde çıkış yaptığınızda işlem tamamlanmış olacaktır.
-"
-read -n 1
+say "Vim eklentileri yükleniyor..."
 
 # vim için tmp dizini oluştur
 mkdir ~/.vim/.tmp
@@ -159,4 +154,13 @@ fi
 
 type fzf >/dev/null 2>&1 ||  ~/.fzf/install
 
-say "Kurulum tamamlandı. 'source ~/.zshrc' ile çalışmaya başlayabilirsiniz."
+say "ruby kuruluyor..."
+$GLOVE/bin/kur ruby
+
+say "docker kuruluyor..."
+$GLOVE/bin/kur docker
+
+say "docker-compose kuruluyor..."
+$GLOVE/bin/kur docker-compose
+
+say "Kurulum tamamlandı. Bilgisayarınızı yeniden başlatın!"

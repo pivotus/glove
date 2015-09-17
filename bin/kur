@@ -25,7 +25,7 @@ install_docker() {
 	sudo sh -c 'echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > /etc/apt/sources.list.d/docker.list'
 	sudo apt-get update
 	sudo apt-get purge lxc-docker*
-	sudo apt-get install docker-engine
+	sudo apt-get install -y docker-engine
 	[ -e /var/lib/docker/devicemapper  ] && sudo rm -rf /var/lib/docker/devicemapper
 	sudo usermod -aG docker $USER
 }
@@ -43,7 +43,7 @@ install_virtualbox() {
 	sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" > /etc/apt/sources.list.d/virtualbox.list'
 	wget --no-check-certificate -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
 	sudo apt-get update
-	sudo apt-get install virtualbox-5.0 dkms
+	sudo apt-get install -y virtualbox-5.0 dkms
 }
 
 
@@ -60,13 +60,13 @@ install_ruby() {
 	say "ruby2.2 kuruluyor..."
 
 	# https://www.brightbox.com/docs/ruby/ubuntu/
-	sudo apt-get install software-properties-common
-	sudo apt-add-repository ppa:brightbox/ruby-ng
+	sudo apt-get install -y software-properties-common
+	sudo apt-add-repository ppa:brightbox/ruby-ng -y
 	sudo apt-get update
 
-	sudo apt-get install build-essential ruby2.2 ruby2.2-dev libssl-dev libxml2-dev libyaml-dev ca-certificates
+	sudo apt-get install -y build-essential ruby2.2 ruby2.2-dev libssl-dev libxml2-dev libyaml-dev ca-certificates
 
-	# ruby2.2'i ruby olarak sisteme tanıt
+	# ruby komutu yoksa ruby2.2'i ruby olarak sisteme tanıt
 	type ruby >/dev/null 2>&1 || sudo update-alternatives \
 		--install /usr/bin/ruby ruby /usr/bin/ruby2.2 50 \
 		--slave /usr/bin/irb irb /usr/bin/irb2.2 \
@@ -78,7 +78,7 @@ install_ruby() {
 		--slave /usr/bin/ri ri /usr/bin/ri2.2
 
 	# rubygems ssl hatası: https://gist.github.com/luislavena/f064211759ee0f806c88
-	wget --no-check-certificat ehttps://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem
+	wget --no-check-certificate https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem
 	sudo gem install rubygems-update-2.2.3.gem
 	sudo update_rubygems
 	sudo gem uninstall rubygems-update -x

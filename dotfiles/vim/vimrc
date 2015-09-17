@@ -33,7 +33,7 @@ set nocompatible
 syntax on
 filetype off
 filetype plugin indent on
-colorscheme atom-dark-256
+silent! colorscheme atom-dark-256
 
 " Basics
 let mapleader=" "
