@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$GIT" ]; then
+	echo "GIT Tanımlı Değil"
+	exit 1
+fi
+
+# extract the protocol
+proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+
+if [ -z $proto ]; then
+	# extract the user
+	user="$(echo $1  | cut -d/ -f1 | cut -d: -f2)"
+else
+	# extract the user
+	user="$(echo $1 | cut -d/ -f4)"
+fi
+
+if [ ! -d $GIT/$user ]; then
+	mkdir $GIT/$user
+fi
+
+cd $GIT/$user
+
+git clone $1

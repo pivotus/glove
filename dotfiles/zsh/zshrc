@@ -1,0 +1,56 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="half-life"
+
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="mm/dd/yyyy"
+
+plugins=(zsh-syntax-highlighting)
+
+# User configuration
+
+export PATH="/usr/local/sbin:/usr/local/bin:/home/$USER/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+export PATH=$PATH:/$HOME/.glove/bin
+
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+source $ZSH/oh-my-zsh.sh
+
+eval `dircolors $HOME/.dircolors/dircolors.256dark`
+export ZSH_CONFIG=$HOME/.glove/dotfiles/zsh
+
+# Allow [ or ] whereever you want
+unsetopt nomatch
+
+sources=(
+	"$ZSH_CONFIG/functions.zsh"
+	"$ZSH_CONFIG/aliases.zsh"
+	"$HOME/.glove/dotfiles/local/zshrc.local"
+)
+
+source $ZSH/oh-my-zsh.sh
+
+#try to include all sources
+foreach file (`echo $sources`)
+	if [[ -a $file ]]; then
+		source $file
+	fi
+end
+
+# Less Colors for Man Pages
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
