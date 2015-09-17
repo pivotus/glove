@@ -48,6 +48,7 @@ alias ...='cd ../..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd-='cd -'
+zstyle ':completion:*' special-dirs true
 
 # https://github.com/robbyrussell/oh-my-zsh/issues/433
 alias rake='noglob rake'
