@@ -3,8 +3,6 @@ call vundle#begin()
 
 " our plugins
 Plugin 'gmarik/Vundle.vim'       " vundle
-Plugin 'chriskempson/tomorrow-theme' , {'rtp': '/vim/'} " tomorrow-theme
-Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'tpope/vim-fugitive'      " git wrapper
 Plugin 'vim-scripts/tComment' " comment the code
 Plugin 'mattn/webapi-vim' " for Gist nad other api
@@ -19,12 +17,16 @@ Plugin 'junegunn/vim-easy-align' " Ez align
 Plugin 'itchyny/lightline.vim' " For bottom vim status bar
 Plugin 'fatih/vim-go' " Golang
 Plugin 'ekalinin/Dockerfile.vim' " Dockerfile
-Plugin 'Valloric/YouCompleteMe', { 'do': './install.sh' } " Auto Complete
+Plugin 'Valloric/YouCompleteMe' " Auto Complete
 Plugin 'tpope/vim-endwise' " Auto end
 Plugin 'bronson/vim-trailing-whitespace' " Fix whitespace
 Plugin 'chase/vim-ansible-yaml' " ansible syntax
 Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
+
+" colorschemes
+Plugin 'chriskempson/tomorrow-theme' , {'rtp': '/vim/'}
+Plugin 'gosukiwi/vim-atom-dark'
 call vundle#end()
 
 set nocompatible

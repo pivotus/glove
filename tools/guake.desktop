@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=guake -e 'tmux -2'
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[tr]=guake
+Name=guake
+Comment[tr]=guake
+Comment=guake

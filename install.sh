@@ -33,8 +33,12 @@ file_exist () {
 	fi
 }
 
-say "Güncelleme işlemleri için upstream ayarlanıyor..."
-git remote add upstream https://github.com/pivotus/glove.git
+cd $GLOVE
+
+if ! git remote | grep upstream > /dev/null; then
+	say "Güncelleme işlemleri için upstream ayarlanıyor..."
+	git remote add upstream https://github.com/pivotus/glove.git
+fi
 
 say "mevcut rc dosyalarınız ~/.glove/backup dizini alınıyor..."
 if file_exist "$HOME/.zshrc"; then
@@ -84,6 +88,15 @@ if file_exist "$HOME/.vimrc"; then
 fi
 ln -s $GLOVE/dotfiles/vim/vimrc $HOME/.vimrc
 
+if ! file_exist "$HOME/.config/autostart"; then
+	mkdir $HOME/.config/autostart
+fi
+
+if file_exist "$HOME/.config/autostart/guake.desktop"; then
+	mv $HOME/.config/autostart/guake.desktop
+fi
+ln -s $GLOVE/tools/guake.desktop $HOME/.config/autostart
+
 if ! file_exist "$HOME/.vim"; then
 	mkdir -p .vim/bundle
 else
@@ -91,16 +104,23 @@ else
 fi
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-
 # guake
 if [ ! -z $DESKTOP_SESSION ]; then
 	sudo apt-get install guake
+
 	# monaco font
-	$GLOVE/tools/monaco-font/install-font-ubuntu.sh
+	cd $GLOVE/tools/monaco-font
+	bash install-font-ubuntu.sh
+
 	gconftool-2 --type string  --set /apps/guake/style/font/style 'Monaco 12'
-	$GLOVE/tools/guake-colors/neon.sh
+
+	# guake neon colorscheme
+	cd $GLOVE/tools/guake-colors
+	bash neon.sh
+
 	# powerline font
-	$GLOVE/tools/powerline-font/install.sh
+	cd $GLOVE/tools/powerline-font
+	bash install.sh
 fi
 
 # dircolors
@@ -134,9 +154,9 @@ say "fzf kuruluyor..."
 if ! file_exist "$HOME/.fzf"; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	sed -i 's/curl\ -fL/curl\ -kfL/' ~/.fzf/install
-	sed -i 's/wget\ -O/wget\ --no-check-certificate\ -O/' install
+	sed -i 's/wget\ -O/wget\ --no-check-certificate\ -O/' ~/.fzf/install
 fi
 
-! type fzf >/dev/null 2>&1 ||  ~/.fzf/install
+type fzf >/dev/null 2>&1 ||  ~/.fzf/install
 
 say "Kurulum tamamlandı. 'source ~/.zshrc' ile çalışmaya başlayabilirsiniz."
