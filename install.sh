@@ -93,7 +93,7 @@ if ! file_exist "$HOME/.config/autostart"; then
 fi
 
 if file_exist "$HOME/.config/autostart/guake.desktop"; then
-	mv $HOME/.config/autostart/guake.desktop
+	mv $HOME/.config/autostart/guake.desktop $BACKUP
 fi
 ln -s $GLOVE/tools/guake.desktop $HOME/.config/autostart
 
