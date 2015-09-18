@@ -139,6 +139,10 @@ nnoremap <Leader>wq :wq<CR>
 
 map q: :q
 
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev WQ wq
+
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
