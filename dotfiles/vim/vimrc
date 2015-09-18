@@ -155,7 +155,7 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 " NERDTree config
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 
 " fzf
 set rtp+=~/.fzf
