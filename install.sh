@@ -38,29 +38,6 @@ file_exist () {
 	fi
 }
 
-# for git config
-git_username=$(git config user.name)
-git_email=$(git config user.email)
-github_user=$(git config github.user)
-
-if [ -z $git_username ]; then
-	say "Ad Soyad yazın: "
-	read git_username
-	sed -i "s/name\ =/name\ =\ $git_username/" $GLOVE/dotfiles/local/gitconfig.local
-fi
-
-if [ -z $git_email ]; then
-	say "GitHub'da kullandığınız email adresini yazın: "
-	read git_email
-	sed -i "s/email\ =/email\ =\ $git_email/" $GLOVE/dotfiles/local/gitconfig.local
-fi
-
-if [ -z $github_user ]; then
-	say "GitHub kullanıcı adınızı yazın: "
-	read github_user
-	sed -i "s/user\ =/user\ =\ $github_user/" $GLOVE/dotfiles/local/gitconfig.local
-fi
-
 cd $GLOVE
 
 if ! git remote | grep upstream > /dev/null; then
@@ -96,6 +73,29 @@ if file_exist "$HOME/.gitconfig"; then
 	mv $HOME/.gitconfig $BACKUP
 fi
 ln -s $GLOVE/dotfiles/gitconfig $HOME/.gitconfig
+
+# for git config
+git_username=$(git config user.name)
+git_email=$(git config user.email)
+github_user=$(git config github.user)
+
+if [ -z "$git_username" ]; then
+	say "Ad Soyad yazın: "
+	read git_username
+	sed -i "s/name\ =/name\ =\ $git_username/" $GLOVE/dotfiles/local/gitconfig.local
+fi
+
+if [ -z "$git_email" ]; then
+	say "GitHub'da kullandığınız email adresini yazın: "
+	read git_email
+	sed -i "s/email\ =/email\ =\ $git_email/" $GLOVE/dotfiles/local/gitconfig.local
+fi
+
+if [ -z "$github_user" ]; then
+	say "GitHub kullanıcı adınızı yazın: "
+	read github_user
+	sed -i "s/user\ =/user\ =\ $github_user/" $GLOVE/dotfiles/local/gitconfig.local
+fi
 
 if file_exist "$HOME/.gitignore_global"; then
 	mv $HOME/.gitignore_global $BACKUP
@@ -133,7 +133,7 @@ fi
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # guake
-if [ ! -z $DESKTOP_SESSION ]; then
+if [ ! -z "$DESKTOP_SESSION" ]; then
 	sudo apt-get install -y guake
 
 	# monaco font

@@ -95,10 +95,18 @@ install_go() {
 	sudo ln -s /usr/local/go/bin/go /usr/bin/go
 }
 
+install_crystal() {
+	say "Crystal kuruluyor..."
+	sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54
+	sudo sh -c 'echo "deb http://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.listi'
+	sudo apt-get update
+	sudo apt-get install crystal
+}
+
 usage() {
 	echo -e "Kullanım: \n\n   $ kur araç_adı \n"
-	echo "Mevcut araçlar:"
-	say "+ docker\n+ docker-compose\n+ docker-machine\n+ virtualbox\n+ ruby\n+ go"
+	echo "Kurulabilir araçlar:"
+	say "- docker\n- docker-compose\n- docker-machine\n- virtualbox\n- ruby\n- go\n- Crystal"
 	exit 1
 }
 

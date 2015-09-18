@@ -23,6 +23,7 @@ Plugin 'bronson/vim-trailing-whitespace' " Fix whitespace
 Plugin 'chase/vim-ansible-yaml' " ansible syntax
 Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rhysd/vim-crystal' " crystal lang
 
 " colorschemes
 Plugin 'chriskempson/tomorrow-theme' , {'rtp': '/vim/'}
@@ -81,7 +82,6 @@ autocmd Filetype {ruby,yaml,html} setlocal et sw=2 sts=2 " 2 spaces for Ruby, YA
 autocmd BufNewFile,BufRead *.html.erb setlocal et sw=2 sts=2 " 2 spaces for erb
 
 " Search
-set ignorecase
 set incsearch " Search as you type
 set gdefault  " Always use the g flag for search
 
