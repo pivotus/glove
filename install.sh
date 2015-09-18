@@ -140,7 +140,11 @@ if [ ! -z $DESKTOP_SESSION ]; then
 	cd $GLOVE/tools/monaco-font
 	bash install-font-ubuntu.sh
 
+	gconftool-2 --type boolean  --set /apps/guake/general/use_default_font false
 	gconftool-2 --type string  --set /apps/guake/style/font/style 'Monaco 12'
+	gconftool-2 --type integer  --set /apps/guake/style/background/transparency 0
+	gconftool-2 --type integer  --set /apps/guake/general/window_height 100
+	gconftool-2 --type boolean  --set /apps/guake/general/window_tabbar false
 
 	# guake neon colorscheme
 	cd $GLOVE/tools/guake-colors
