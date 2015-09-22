@@ -71,4 +71,4 @@ alias dmweb='docker-machine start web &> /dev/null && eval "$(docker-machine env
 
 # tmux
 alias tkill='tmux kill-session -t'
-alias tattach='tmux a -t'
+alias tattach='tmux -2 a -t'
