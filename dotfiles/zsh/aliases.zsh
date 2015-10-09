@@ -68,7 +68,11 @@ alias dm='docker-machine'
 alias dme='eval "$(docker-machine env web)"'
 alias dmweb='docker-machine start web &> /dev/null && eval "$(docker-machine env web)"'
 
-
 # tmux
 alias tkill='tmux kill-session -t'
 alias tattach='tmux -2 a -t'
+
+# tar & rar
+alias untar='tar -xvf'
+alias untargz='tar -zxvf'
+alias unrar='unrar x'
