@@ -116,7 +116,9 @@ nmap ga <Plug>(EasyAlign)
 
 " Copy & Paste
 vmap <Leader>y "+y
+vmap <Leader>Y "+y
 vmap <Leader>d "+d
+vmap <Leader>D "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
