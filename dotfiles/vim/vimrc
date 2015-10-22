@@ -245,6 +245,22 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "→"
+let g:syntastic_style_warning_symbol = "→"
+
+" Ruby'de rubocop denetimi istiyoruz.
+let g:syntastic_ruby_checkers = ['rubocop']
+
 " turkish.vim
 if filereadable(glob("~/.glove/dotfiles/vim/turkish.vim"))
 	source ~/.glove/dotfiles/vim/turkish.vim

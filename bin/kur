@@ -85,6 +85,7 @@ install_ruby() {
 
 	# pry gerekebilir
 	sudo gem install pry --no-ri --no-rdoc
+	sudo gem install rubocop --no-ri --no-rdoc
 }
 
 install_go() {
