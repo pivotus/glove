@@ -169,20 +169,27 @@ set rtp+=~/.fzf
 
 " lightline config
 let g:lightline = {
-      		\ 'colorscheme': 'Tomorrow_Night_Eighties',
-      		\ 'active': {
-      		\   'left': [ [ 'mode', 'paste' ],
-      		\             [ 'fugitive', 'filename' ] ]
-      		\ },
-      		\ 'component_function': {
-      		\   'fugitive': 'MyFugitive',
-      		\   'readonly': 'MyReadonly',
-      		\   'modified': 'MyModified',
-      		\   'filename': 'MyFilename'
-      		\ },
-      		\ 'separator': { 'left': '', 'right': '' },
-      		\ 'subseparator': { 'left': '', 'right': '' }
-      		\ }
+      			\ 'colorscheme': 'Tomorrow_Night_Eighties',
+      			\ 'active': {
+      			\   'left': [ [ 'mode', 'paste' ],
+      			\             [ 'fugitive', 'filename' ] ],
+			\   'right': [ [ 'syntastic', 'lineinfo'  ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'  ]  ]
+      			\ },
+      			\ 'component_function': {
+      			\   'fugitive': 'MyFugitive',
+      			\   'readonly': 'MyReadonly',
+      			\   'modified': 'MyModified',
+      			\   'filename': 'MyFilename'
+      			\ },
+               		\ 'component_expand': {
+               		\   'syntastic': 'SyntasticStatuslineFlag',
+               		\ },
+               		\ 'component_type': {
+               		\   'syntastic': 'error',
+               		\ },
+      			\ 'separator': { 'left': '', 'right': '' },
+      			\ 'subseparator': { 'left': '', 'right': '' }
+      			\ }
 
 function! MyModified()
 	if &filetype == "help"
@@ -216,9 +223,29 @@ endfunction
 
 function! MyFilename()
 	return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-	  	        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-	  	        \ ('' != MyModified() ? ' ' . MyModified() : '')
+	  	        	\ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+	  	        	\ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
+
+augroup AutoSyntastic
+  	autocmd!
+  	autocmd BufWritePost * call s:syntastic()
+augroup END
+function! s:syntastic()
+  	SyntasticCheck
+  	call lightline#update()
+endfunction
+
+" syntastic
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "→"
+let g:syntastic_style_warning_symbol = "→"
+
+" Ruby'de rubocop denetimi istiyoruz.
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " vim-go
 let g:go_highlight_functions = 1
@@ -244,21 +271,6 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 au FileType go nmap <Leader>e <Plug>(go-rename)
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_warning_symbol = "→"
-let g:syntastic_style_warning_symbol = "→"
-
-" Ruby'de rubocop denetimi istiyoruz.
-let g:syntastic_ruby_checkers = ['rubocop']
 
 " turkish.vim
 if filereadable(glob("~/.glove/dotfiles/vim/turkish.vim"))
