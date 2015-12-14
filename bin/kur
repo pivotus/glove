@@ -99,7 +99,7 @@ install_go() {
 install_crystal() {
 	say "Crystal kuruluyor..."
 	sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54
-	sudo sh -c 'echo "deb http://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.listi'
+	sudo sh -c 'echo "deb http://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.list'
 	sudo apt-get update
 	sudo apt-get install crystal
 }
@@ -114,7 +114,7 @@ usage() {
 [ $# -eq 0  ] && usage
 
 case $1 in
-docker|docker-compose|docker-machine|virtualbox|ruby|go)
+docker|docker-compose|docker-machine|virtualbox|ruby|go|crystal)
 	sudostart
 	install_$1
 	;;
