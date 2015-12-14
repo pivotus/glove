@@ -164,9 +164,6 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 let NERDTreeShowHidden=1
 map <F7> :NERDTreeToggle<CR>
 
-" fzf
-set rtp+=~/.fzf
-
 " lightline config
 let g:lightline = {
       			\ 'colorscheme': 'Tomorrow_Night_Eighties',
