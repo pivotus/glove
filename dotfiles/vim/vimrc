@@ -54,6 +54,7 @@ set showcmd
 set shortmess+=I   " Hide Vim startup message
 set autoread
 set backspace=2
+autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
 set title
 set backup
 set undofile
