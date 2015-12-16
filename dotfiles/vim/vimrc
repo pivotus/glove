@@ -45,13 +45,15 @@ let mapleader=" "
 set mouse=a
 hi Visual term=reverse cterm=reverse guibg=Grey
 set clipboard=unnamedplus
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set noeb vb t_vb=  " Disable sound
-set nojoinspaces   " No double space when joining lines
+set ruler                     " Show the line number and column in the status bar"
+set showmatch                 " Highlight matching braces"
+set laststatus=2              " Always show the statusline
+set encoding=utf-8            " Necessary to show Unicode glyphs
+set noeb vb t_vb=             " Disable sound
+set nojoinspaces              " No double space when joining lines
 set whichwrap=b,s,[,],<,>,h,l " Allow cursor to wrap between lines
 set showcmd
-set shortmess+=I   " Hide Vim startup message
+set shortmess+=I              " Hide Vim startup message
 set autoread
 set backspace=2
 autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
@@ -59,7 +61,7 @@ set title
 set backup
 set undofile
 set writebackup
-autocmd BufEnter * lcd %:p:h " change the directory to where the edited file.
+autocmd BufEnter * lcd %:p:h  " change the directory to where the edited file.
 
 " add keywords
 autocmd BufRead,BufNewFile * syntax keyword Todo TODO XXX FIXME
@@ -68,7 +70,6 @@ autocmd BufRead,BufNewFile * syntax keyword Todo TODO XXX FIXME
 autocmd! BufWritePost .vimrc source ~/.vimrc
 
 " Layout stuff
-set cul " Highlight the current line
 set textwidth=120
 set scrolloff=5 " Scroll distance at the top / bottom
 set wildmenu
@@ -93,6 +94,13 @@ autocmd BufNewFile,BufRead *.html.erb setlocal et sw=2 sts=2 " 2 spaces for erb
 " Search
 set incsearch " Search as you type
 set gdefault  " Always use the g flag for search
+set hlsearch   " Highlight results
+set ignorecase " Ignore casing of searches
+set incsearch  " Start showing results as you type
+set smartcase  " Be smart about case sensitivity when searching
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " Matching
 set matchpairs+=<:>
