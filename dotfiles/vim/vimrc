@@ -92,18 +92,12 @@ autocmd Filetype {ruby,yaml,html} setlocal et sw=2 sts=2 " 2 spaces for Ruby, YA
 autocmd BufNewFile,BufRead *.html.erb setlocal et sw=2 sts=2 " 2 spaces for erb
 
 " Search
-set incsearch " Search as you type
-set gdefault  " Always use the g flag for search
 set hlsearch   " Highlight results
-set ignorecase " Ignore casing of searches
 set incsearch  " Start showing results as you type
 set smartcase  " Be smart about case sensitivity when searching
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Matching
-set matchpairs+=<:>
 
 " swap files
 set backupdir=~/.vim/.tmp//,~/tmp/.vim//
