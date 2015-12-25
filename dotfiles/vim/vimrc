@@ -59,7 +59,6 @@ set backspace=2
 autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
 set title
 set backup
-set undofile
 set writebackup
 autocmd BufEnter * lcd %:p:h  " change the directory to where the edited file.
 
