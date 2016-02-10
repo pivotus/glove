@@ -57,7 +57,6 @@ alias rake='noglob rake'
 alias d='docker'
 alias dps='docker ps'
 alias drmall='docker rm $(docker ps -a -q)'
-alias drmu="docker rmi -f `docker images -q --filter "dangling=true"`"
 alias dpsa='docker ps -a'
 alias dc='docker-compose'
 alias dcu='docker-compose up'
