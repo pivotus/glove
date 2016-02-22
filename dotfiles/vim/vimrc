@@ -148,6 +148,9 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev WQ wq
 
+" <del> always deletes without a side effect
+noremap <del> "_x
+
 " Command to write as root if we dont' have permission
 cmap w!! %!sudo tee > /dev/null %
 
