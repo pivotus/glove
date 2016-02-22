@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+cd ~/.glove
+
+git pull upstream master
+
+git push
