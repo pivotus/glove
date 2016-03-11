@@ -87,7 +87,7 @@ au Filetype vim let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'", '`':'`'}
 set smartindent
 set autoindent
 set noet ci pi sts=0 sw=8 ts=8 " Tabs, shown as 8 spaces
-autocmd Filetype {ruby,yaml,html} setlocal et sw=2 sts=2 " 2 spaces for Ruby, YAML, Html
+autocmd Filetype {ruby,yaml,html,crystal} setlocal et sw=2 sts=2 " 2 spaces for Ruby, YAML, Html
 autocmd BufNewFile,BufRead *.html.erb setlocal et sw=2 sts=2 " 2 spaces for erb
 
 " Search
