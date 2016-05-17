@@ -9,11 +9,6 @@ sudo apt-get update
 # install zsh, tmux
 sudo apt-get install -y zsh tmux vim vim-gtk build-essential cmake exuberant-ctags
 
-# tmux 2.0
-wget http://ftp.de.debian.org/debian/pool/main/t/tmux/tmux_2.0-3_amd64.deb
-sudo dpkg -i tmux_2.0-3_amd64.deb
-rm -f tmux_2.0-3_amd64.deb
-
 if [ ! $SHELL="/bin/zsh" ]; then
 	echo "Kabuk değişimi için parolanızı girin!"
 	chsh -s /bin/zsh
