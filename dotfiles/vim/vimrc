@@ -24,6 +24,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rhysd/vim-crystal' " crystal lang
 Plugin 'elzr/vim-json'
+Plugin 'airblade/vim-gitgutter'
 
 " colorschemes
 Plugin 'chriskempson/tomorrow-theme' , {'rtp': '/vim/'}
@@ -57,6 +58,7 @@ set title
 set backup
 set writebackup
 autocmd BufEnter * lcd %:p:h  " change the directory to where the edited file.
+set updatetime=250
 
 " add keywords
 autocmd BufRead,BufNewFile * syntax keyword Todo TODO XXX FIXME
