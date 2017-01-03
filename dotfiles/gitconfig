@@ -18,6 +18,7 @@
 	h = help
 	la = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	l = log --graph --decorate --pretty=oneline --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ls-ignored = ls-files --exclude-standard --ignored --others
 	m = merge
 	pl = pull
