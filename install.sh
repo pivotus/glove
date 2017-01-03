@@ -140,7 +140,7 @@ if [ ! -z "$DESKTOP_SESSION" ]; then
 	gconftool-2 --type integer  --set /apps/guake/style/background/transparency 0
 	gconftool-2 --type integer  --set /apps/guake/style/cursor_blink_mode 2
 	gconftool-2 --type integer  --set /apps/guake/general/window_height 100
-	gconftool-2 --type integer  --set /apps/guake/general/window_height_f 100
+	gconftool-2 --type float  --set /apps/guake/general/window_height_f 100
 	gconftool-2 --type boolean  --set /apps/guake/general/window_tabbar false
 	gconftool-2 --type boolean  --set /apps/guake/general/start_fullscreen true
 
