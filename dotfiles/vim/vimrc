@@ -67,7 +67,7 @@ autocmd BufRead,BufNewFile * syntax keyword Todo TODO XXX FIXME
 autocmd! BufWritePost .vimrc source ~/.vimrc
 
 " Layout stuff
-set textwidth=120
+set textwidth=80
 set scrolloff=5 " Scroll distance at the top / bottom
 set wildmenu
 
